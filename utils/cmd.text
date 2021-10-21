@@ -9,3 +9,10 @@ yarn add @react-navigation/native-stack
 ============================================
 
 yarn add @expo/vector-icons
+
+============================================
+
+yarn add redux
+
+yarn add react-redux
+
