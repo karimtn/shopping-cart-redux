@@ -7,7 +7,7 @@ import { Provider as StoreProvider } from "react-redux";
 
 export default function App() {
   return (
-    <StoreProvider>
+    <StoreProvider store={store}>
       <NavigationContainer>
         <MainStack />
       </NavigationContainer>

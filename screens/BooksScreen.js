@@ -8,15 +8,21 @@ import {
   StyleSheet,
 } from "react-native";
 import { books } from "../utils/Data";
-import { Separator } from "../components/Separator";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "../redux/CartItems";
+import Separator from "../components/Separator";
 
 const BooksScreen = () => {
+  const dispatch = useDispatch();
+  const addItemToCart = (item) =>
+    dispatch({ type: ADD_TO_CART, payload: item });
+
   return (
     <View style={styles.container}>
       <FlatList
         data={books}
         keyExtractor={(item) => item.id.toString()}
-        ItemSeparatorComponent={() => Separator()}
+        ItemSeparatorComponent={() => <Separator />}
         renderItem={({ item }) => (
           <View style={styles.bookItemContainer}>
             <Image source={{ uri: item.imgUrl }} style={styles.thumbnail} />
@@ -27,7 +33,7 @@ const BooksScreen = () => {
               <Text style={styles.textAuthor}>by {item.author}</Text>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                  onPress={() => alert("Add to cart")}
+                  onPress={() => addItemToCart(item)}
                   style={styles.button}
                 >
                   <Text style={styles.buttonText}>Add +</Text>
