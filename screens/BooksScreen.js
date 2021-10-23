@@ -9,13 +9,12 @@ import {
 } from "react-native";
 import { books } from "../utils/Data";
 import { useDispatch } from "react-redux";
-import { ADD_TO_CART } from "../redux/CartItems";
 import Separator from "../components/Separator";
+import * as actions from "../redux/actions";
 
 const BooksScreen = () => {
   const dispatch = useDispatch();
-  const addItemToCart = (item) =>
-    dispatch({ type: ADD_TO_CART, payload: item });
+  const addItemToCart = (item) => dispatch(actions.addItem(item));
 
   return (
     <View style={styles.container}>

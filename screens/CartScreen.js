@@ -8,18 +8,14 @@ import {
   StyleSheet,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { REMOVE_FROM_CART } from "../redux/CartItems";
 import Separator from "../components/Separator";
+import * as actions from "../redux/actions";
 
 function CartScreen() {
   const cartItems = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const removeItemFromCart = (item) =>
-    dispatch({
-      type: REMOVE_FROM_CART,
-      payload: item,
-    });
+  const removeItemFromCart = (item) => dispatch(actions.removeItem(item));
   return (
     <View
       style={{
